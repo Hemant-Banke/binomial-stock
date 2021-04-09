@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binomial Tree Model</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <noscript>Please enable Javascript!</noscript>
+
+    <div class="wrapper opened" id="wrapper" data-toggle="open">
+        <div class="sidebar">
+            <h4>Controls</h4>
+            <img src="./assets/diag.png" class="control_diag mb-3" alt="Diagram">
+
+            <form action="#" id="control_form" id="control_form">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="input_s0" placeholder="100" value="100">
+                    <label for="input_s0">Initial Price (S<sub>0</sub>)</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="input_u" placeholder="5%" value="2">
+                    <label for="input_u">Upwards % (u)</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="input_d" placeholder="5%" value="2">
+                    <label for="input_u">Downwards % (d)</label>
+                </div>
+
+                <div class="mb-3">
+                    <label for="input_p" class="form-label"><small>Upwards Probability (p)</small></label>
+                    <input type="range" class="form-range" min="0" max="1" step="0.01" value="0.5" id="input_p">
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="input_steps" placeholder="1000" value="1000">
+                    <label for="input_steps">Number of Steps (int)</label>
+                </div>
+
+                <input type="submit" class="btn btn-primary ml-auto" id="control_apply" value="Apply">
+            </form>
+
+        </div>
+
+        <div id="sidebar_toggle">
+            <span class="material-icons text-primary">
+                chevron_left
+            </span>
+        </div>
+
+        <div class="main_wrapper">
+            <h3>Binomial Model</h3>
+            <small>
+                S<sub>0</sub> : <span id="control_s0">100</span>,
+                u : <span id="control_u">2</span>,
+                d : <span id="control_d">2</span>,
+                p : <span id="control_p">0.5</span>,
+                steps : <span id="control_steps">1000</span>
+            </small>
+
+            <div class="card shadow-sm my-3">
+                <div class="card-body">
+                    <h6>Stock Price / Steps
+                        <div class="spinner-border spinner-border-sm" id="data_spinner" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </h6>
+
+                    <div>
+                        <canvas id="stock_chart">Browser doesn't support Canvas</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./assets/script.js"></script>
+</body>
+</html>

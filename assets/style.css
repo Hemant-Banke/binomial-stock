@@ -1,0 +1,129 @@
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    color: #333;
+}
+
+.sidebar{
+    width: 300px;
+    height: 100%;
+    max-width: 100%;
+    box-shadow: 0.5rem 0 1rem rgb(0 0 0 / 5%);
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 2rem;
+    overflow-y: auto;
+    transition: all 0.25s;
+}
+
+.main_wrapper{
+    height: 100%;
+    width: calc(100% - 300px);
+    background-color: #f8f9fa;
+    position: absolute;
+    top: 0;
+    left: 300px;
+    padding: 2rem;
+    overflow-y: auto;
+    transition: all 0.25s;
+}
+
+.wrapper.opened .sidebar{
+    left: 0;
+}
+.wrapper.opened .main_wrapper{
+    width: calc(100% - 300px);
+    left: 300px;
+}
+.wrapper.closed .sidebar{
+    left: -100%;
+}
+.wrapper.closed .main_wrapper{
+    width: 100%;
+    left: 0;
+}
+
+
+/**
+    Sidebar
+*/
+.control_diag{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: calc(100% - 6rem);
+}
+
+#sidebar_toggle{
+    position: absolute;
+    top: 3rem;
+    left: calc(300px - 4rem);
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    z-index: 20;
+    transition: all 0.25s;
+}
+
+#sidebar_toggle:hover{
+    box-shadow: none;
+}
+#sidebar_toggle .material-icons{
+    font-size: 1.4rem;
+}
+
+.wrapper.opened #sidebar_toggle{
+    left: calc(300px - 4rem);
+}
+.wrapper.closed #sidebar_toggle{
+    left: 1rem;
+}
+
+
+/**
+    Main Wrapper
+*/
+.wrapper.closed .main_wrapper h3{
+    margin-left: 2rem;
+}
+
+#data_spinner{
+    margin-left: 0.5rem;
+    display: none;
+}
+
+
+@media (max-width: 767px){
+    .sidebar{
+        padding: 2rem 1rem;
+        width: 100% !important;
+    }
+    .wrapper.opened #sidebar_toggle{
+        right: 2rem;
+        left: auto;
+    }
+
+    .main_wrapper{
+        padding: 2rem 1rem;
+        width: 100% !important;
+        left: 0 !important;
+    }
+
+    .wrapper.closed .main_wrapper h3{
+        margin-left: 3rem;
+    }
+
+    #stock_chart{
+        height: 200px;
+    }
+}
